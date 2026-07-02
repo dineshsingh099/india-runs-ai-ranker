@@ -1,0 +1,44 @@
+team_name: "DSInnovators2026"
+
+primary_contact:
+  name: "Dinesh Singh"
+  email: "ddddineshrawatddd@gmail.com"
+  phone: "+91-8955524407"
+
+team_members:
+  - name: "Dinesh Singh"
+    email: "ddddineshrawatddd@gmail.com"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/dineshsingh099/india-runs-ai-ranker"
+
+sandbox_link: "https://YOUR-APP.streamlit.app"
+
+reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./outputs/submission.csv"
+
+compute:
+  platform: "Local Windows Laptop"
+  cpu_cores: 1
+  ram_gb: 4
+  python_version: "3.13"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "ChatGPT"
+
+ai_usage_summary: |
+  ChatGPT was used for guidance, debugging support, and documentation improvements. The project implementation, ranking logic, and final code were developed and integrated by the author.
+
+methodology_summary: |
+  Hybrid candidate ranking system combining title relevance, skill credibility, TF-IDF semantic similarity, experience fit, behavioral signals, and honeypot detection. The system generates explainable rankings and runs fully offline on CPU without external API calls.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
