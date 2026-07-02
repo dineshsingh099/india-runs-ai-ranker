@@ -1,21 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
 .venv/
 venv/
 env/
 
-__pycache__/
-*.py[cod]
-
-.vscode/
-.idea/
-
+# Environment Variables
 .env
 
-.pytest_cache/
-.mypy_cache/
+# VS Code
+.vscode/
 
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
 .DS_Store
 Thumbs.db
 
+# Build / Distribution
+build/
+dist/
+*.egg-info/
+
+# Logs
 *.log
 
-data/candidates.jsonl
+# Model files (agar bahut bade hain)
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Dataset (agar bahut bada hai)
+data/
+dataset_extracted/
+DATASET.zip
+
+# Output files
+outputs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cache
+.cache/
+.pytest_cache/

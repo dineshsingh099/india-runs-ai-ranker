@@ -97,7 +97,30 @@ def honeypot_score(cand):
         flags.append("notice_period_days > documented max of 180")
         weight += 2.0
 
-    # 5. education year arithmetic
+    # 5. YOE vs Expert Skills
+    expert_adv_skills = [s for s in skills if s.get("proficiency") in ("expert", "advanced")]
+    if len(expert_adv_skills) >= 10 and yoe <= 1.5:
+        flags.append(f"{len(expert_adv_skills)} expert/advanced skills with YOE={yoe}")
+        weight += 2.0
+
+    # 6. YOE vs Principal/Architect/Director titles
+    current_title = cand.get("profile", {}).get("current_title", "") or ""
+    history_titles = [ch.get("title", "") for ch in cand.get("career_history", [])]
+    all_recent_titles = [current_title] + history_titles
+    has_principal_title = any(
+        any(w in t.lower().split() or any(p_word in t.lower() for p_word in ["principal architect", "principal engineer", "staff engineer", "tech lead"]) for w in ["principal", "architect", "director", "staff", "cto", "vp", "chief", "head"])
+        for t in all_recent_titles if t
+    )
+    if has_principal_title and yoe <= 2.0:
+        flags.append(f"high-seniority title with YOE={yoe}")
+        weight += 2.0
+
+    # 7. Total skills vs YOE (keyword stuffing)
+    if len(skills) > 30 and yoe < 2.0:
+        flags.append(f"keyword stuffing: {len(skills)} skills listed with YOE={yoe}")
+        weight += 2.0
+
+    # 8. education year arithmetic
     for ed_entry in cand.get("education", []):
         sy, ey = ed_entry.get("start_year"), ed_entry.get("end_year")
         if sy and ey and ey < sy:
@@ -106,3 +129,4 @@ def honeypot_score(cand):
 
     is_honeypot = weight >= 2.0
     return is_honeypot, weight, flags
+
