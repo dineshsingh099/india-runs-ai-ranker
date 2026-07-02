@@ -17,3 +17,5 @@ __pycache__/
 Thumbs.db
 
 *.log
+
+data/candidates.jsonl
