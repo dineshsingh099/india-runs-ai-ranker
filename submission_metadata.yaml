@@ -12,7 +12,7 @@ team_members:
 
 github_repo: "https://github.com/dineshsingh099/india-runs-ai-ranker"
 
-sandbox_link: "https://YOUR-APP.streamlit.app"
+sandbox_link: "https://huggingface.co/spaces/dineshsingh07/india-runs-ai-ranker"
 
 reproduce_command: "python rank.py --candidates ./data/candidates.jsonl --out ./outputs/submission.csv"
 
